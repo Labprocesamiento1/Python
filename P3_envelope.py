@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from scipy.signal import welch
 
 # Cargar la señal desde un archivo.mat
-mat_data = sio.loadmat("315.mat")
-signal = mat_data["X315_FE_time"]
+mat_data = sio.loadmat("IR007_1730_12DE.mat")
+signal = mat_data["X108_DE_time"]
 
 fs = 12000
 
@@ -26,8 +26,16 @@ F0 = frequencies[np.argmax(psd)]
 BPFO = F0 - fs / len(psd)
 BPFI = F0 + fs / len(psd)
 
-# Graficar
-plt.figure(figsize=(8, 6))
+# Gráfico de la señal original
+plt.subplot(2, 1, 1)
+plt.plot(np.arange(len(signal)) / fs, signal)
+plt.title("Señal Original")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid()
+
+# Gráfico de la PSD del espectro envolvente
+plt.subplot(2, 1, 2)
 plt.plot(frequencies, psd)
 plt.title("Power Spectral Density (PSD) del espectro envolvente")
 plt.xlabel("Frecuencia (Hz)")
