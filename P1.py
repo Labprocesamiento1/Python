@@ -1,19 +1,20 @@
-import scipy.io as sio
-import matplotlib.pyplot as plt
-import pandas as pd
+# Importar las bibliotecas necesarias
+import scipy.io as sio  # Importar scipy.io para cargar archivos .mat
+import matplotlib.pyplot as plt  # Importar matplotlib para graficar
+import pandas as pd  # Importar pandas (aunque no se utiliza en este código)
 
-# Cargar las señales desde archivos .mat diferentes
-mat_data = sio.loadmat("Normal_0.mat")
+# Cargar la señal desde un archivo .mat
+mat_data = sio.loadmat("Normal_0.mat")  # Cargar el archivo .mat llamado "Normal_0.mat"
 data = mat_data["X097_DE_time"]  # Obtener los datos de la señal 1
 
 # Graficar las señales en dos subplots separados
 # Señal normal
-plt.subplot(2, 1, 1)
-plt.plot(data)
-plt.title("Normal")
-plt.ylabel("Amplitud")
-
-plt.show()
+plt.figure()  # Crear una nueva figura para la gráfica
+plt.plot(data)  # Graficar los datos de la señal en el primer subplot
+plt.title("Normal")  # Establecer el título del primer subplot como "Normal"
+plt.xlabel("Muestras")  # Establecer la etiqueta del eje x como "Muestras"
+plt.ylabel("Amplitud")  # Establecer la etiqueta del eje y del primer subplot
+plt.show()  # Mostrar la gráfica en una ventana emergente
 
 
 # OTRAS OPCIONES
